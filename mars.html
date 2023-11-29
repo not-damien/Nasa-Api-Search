@@ -23,10 +23,11 @@
           <a class="nav-link active" href="mars.html">Mars photos</a>
         </li>
       </ul>
-      <div class="container" id="photobank">
+      
       <h3>Mars Phtotos by sol(day)</h3>
-      <label>Enter Sol number</label><input type="number" id="sol" value="12"><button onclick="getPhotos()">Submit</button>
+      <label>Enter Sol number</label><input type="number" id="sol" value="15"><button onclick="getPhotos()">Submit</button>
       <hr>
+      <div class="container" id="photobank">
           </div>
     </body>
     <script>
@@ -38,6 +39,7 @@
         let j = JSON.parse(string)
         //once loaded type code here
             console.log(j.photos)
+            $("#photobank").empty();
             for(let i = 0;i < j.photos.length;i++){
                 let img  = $(document.createElement('img'))
                 img.attr({'src':j.photos[i].img_src})
@@ -47,7 +49,7 @@
     xhttp.open("GET", 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol='+$('#sol').val()+'&page=2&api_key='+ nasakey, true);
     xhttp.send();
 }
-getPhotos()
+//getPhotos()
     </script>
 
 </html>
